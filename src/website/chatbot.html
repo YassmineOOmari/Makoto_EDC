@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="theme-color" content="#cccee7">
+    <!-- Primary Meta Tags -->
+    <title>Makoto | serenity & sincerity</title>
+    <meta name="title" content="MAKOTO | sincerity is everything ✦❞">
+    <meta name="description" content="!">
+    <link rel="icon" href="https://imgur.com/aK2orP8.png">
+    <link rel="stylesheet" href="D:\Jupyter\EDC\chatbot\Makoto_EDC\src\static\styles.css">
+    
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@3.15.0/dist/tf.js"></script>
+</head>
+<body>
+<div class="big_container">
+    <div class="main_heading">makoto</div>
+    <div class="sub_heading">serenity and sincerity</div>
+    <div class="nav_container">
+        <div class="nav_option">
+            <div class="nav_option_text">
+                <a style="text-decoration:none" href="D:\Jupyter\EDC\chatbot\Makoto_EDC\src\website\index.html">about</a>
+            </div>
+        </div>
+        <div class="nav_option">
+            <div class="nav_option_text">
+                chat
+            </div>
+        </div>
+    </div>
+</div>
+<div class="small_container_chat">
+    <div class="inner_ack_chat">
+        <div class="chatbox">
+            <div class="chat-log" id="chat-log">
+                <div class="message">
+                    <span class="user">You:</span>
+                    <span class="text">Hello, I need help.</span>
+                </div>
+                <div class="message">
+                    <span class="user">Makoto:</span>
+                    <span class="text">Hi there! How can I assist you today?</span>
+                </div>
+            </div>
+            <div class="input-area">
+                <input type="text" name="msg" id="user-input" placeholder="Type your message..." />
+                <button id="send-button">Send</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer">
+    <div class="copyright"> © 2023 Makoto - All rights reserved. </div>
+</div>
+<script>
+    // Get the necessary DOM elements
+    const chatLog = document.getElementById('chat-log');
+    const userInput = document.getElementById('user-input');
+    const sendButton = document.getElementById('send-button');
+
+    // Function to add a new chat message to the chat log
+    function addChatMessage(user, message) {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message');
+        messageElement.innerHTML = `<span class="user">${user}:</span><span class="text">${message}</span>`;
+        chatLog.appendChild(messageElement);
+    }
+
+    // Function to send the user input to the server and receive the chatbot's response
+    function sendMessage() {
+        const userMessage = userInput.value.trim();
+        if (userMessage !== '') {
+            addChatMessage('You', userMessage);
+
+            // Send the user input to the server using a POST request
+            fetch('/chatbot', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_input: userMessage })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    // Process the chatbot's response
+                    const botResponse = data.response;
+                    addChatMessage('Makoto', botResponse);
+
+                    // Clear the user input field
+                    userInput.value = '';
+
+                    // Scroll to the bottom of the chat log
+                    chatLog.scrollTop = chatLog.scrollHeight;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+        }
+    }
+
+    // Function to fetch the initial chat log
+    function fetchChatLog() {
+        fetch('/chatlog')
+            .then(response => response.json())
+            .then(data => {
+                const chatLogData = data.chatlog;
+                chatLogData.forEach(chat => {
+                    addChatMessage(chat.user, chat.message);
+                });
+
+                // Scroll to the bottom of the chat log
+                chatLog.scrollTop = chatLog.scrollHeight;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    // Event listener for the send button
+    sendButton.addEventListener('click', sendMessage);
+
+    // Event listener for the Enter key
+    userInput.addEventListener('keydown', event => {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    // Fetch the initial chat log
+    fetchChatLog();
+</script>
+</body>
+</html>

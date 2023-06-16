@@ -1,0 +1,301 @@
+@import url('http://fonts.cdnfonts.com/css/crewniverse');
+@import url('http://fonts.cdnfonts.com/css/rimouski');
+
+html {
+    background: url('https://imgur.com/5hgzdzG.png') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+body {
+    font-family: rimouski;
+}
+.big_container {
+    max-width: 500px;
+    width: 50%;
+    min-width: 300px;
+    margin: auto;
+}
+.main_heading {
+    font-family: Crewniverse;
+    text-transform: uppercase;
+    font-size: 50px;
+    color: #6d6d91;
+    margin-top: 20px;
+}
+
+a {
+    color: inherit;
+}
+
+.sub_heading {
+    color: #ebc0c0;
+    font-size: 20px;
+    font-family: Rimouski;
+    font-weight: 100;
+    font-stretch: extra-expanded;
+    margin-bottom: 10px;
+    transition: 0.2s ease;
+}
+
+.sub_heading:hover {
+    font-size: 22px;
+    color: #d1a1a1;
+    transition: 0.2s ease;
+}
+
+.nav_container {
+    max-width: inherit;
+    padding-left: 10%;
+    padding-right: 10%;
+    padding-top: 15%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.nav_option {
+    max-width: calc(100%/3);
+    flex: 10 40%;
+    margin: auto;
+    text-align: center;
+}
+
+.nav_option:hover .nav_option_text {
+    color: #9fa2c7;
+    padding-top: 5px;
+    font-size: 22px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+.nav_option:hover .nav_option_img {
+    opacity: 90%;
+    transform: scale(1.1);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+@media only screen and (max-width: 400px) {
+    .main_heading {
+        font-size: 40px;
+    }
+    .nav_option {
+        max-width: unset;
+        flex: unset;
+        width: 100px;
+    }
+
+}
+
+.nav_option_img {
+    opacity: 100%;
+    width: 120%;
+    margin: -15% -15%;
+    transition: 0.3s ease;
+}
+
+.nav_option_text {
+    text-transform: uppercase;
+    font-family: Crewniverse;
+    color: #6d6d91;
+    transition: 0.3s ease;
+}
+
+.plan_banner {
+    transform: rotate(-2deg);
+    width: 80%;
+    margin-top: 15px;
+    transition: 0.3s ease;
+
+}
+.plan_banner:hover {
+    transform: rotate(2deg);
+    transition: 0.3s ease;
+}
+
+.footer {
+    width: 300px;
+    bottom: 5px;
+    left: 50%;
+    margin: auto auto auto -150px;
+    position:absolute;
+
+}
+.socials_container {
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+}
+
+.socials_option {
+    height: 50px;
+    width: 50px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    transition: 0.2s ease;
+}
+.socials_option:hover {
+    cursor: pointer;
+    height: 45px;
+    width: 45px;
+    opacity: 80%;
+    transition: 0.2s ease;
+
+}
+
+.small_container {
+    opacity: 0.8;
+    border: solid 2px white;
+    border-radius: 30px;
+    background-color: #daebf2;
+    margin: 20px auto;
+    min-width: 280px;
+    max-width: 60%;
+    padding: 20px;
+    text-align: center;
+}
+
+.inner_ack {
+    margin-top: 10px;
+    color: #63678c;
+    font-size: 25px;
+    flex-direction: column;
+}
+
+.special_thanks {
+    color: #9f7d7a;
+}
+
+.dedication {
+    font-size: 17px;
+}
+
+.person_name {
+    color: #b29491;
+}
+
+.person_name:hover {
+    color: #c2a4a1;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.copyright {
+    font-size: 16px;
+    color: white;
+    font-family: Rimouski;
+}
+
+
+.chatbox {
+    width: 500px;
+    height: 500px;
+    border: none;
+    border-radius: 5px;
+    overflow: auto;
+    justify-content: center;
+    align-items: center;
+    
+  }
+  
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    outline: white;
+    background-color: #c8b3db;
+    border: solid 2px #c8b3db;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #dfbff2;
+    border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #c3a5e6;
+}
+  .chat-log {
+    padding: 10px;
+    overflow-y: scroll;
+    height: 80%;
+  }
+  
+  .message {
+    margin-bottom: 10px;
+  }
+  
+  .user {
+    font-weight: bold;
+    margin-right: 5px;
+  }
+  
+  .input-area {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f5f5f5;
+  }
+  
+  #user-input {
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+  }
+  
+  #send-button {
+    padding: 5px 10px;
+    border-radius: 3px;
+    background-color: #c1b1ed;
+    color: #fff;
+    border: none;
+    margin-left: 10px;
+  }
+  
+  .small_container_chat {
+    opacity: 0.8;
+    border: solid 2px white;
+    border-radius: 30px;
+    background-color: #daebf2;
+    margin: 20px auto;
+    min-width: 280px;
+    max-width: 60%;
+    padding: 20px;
+    text-align: justify;
+}
+
+.inner_ack_chat {
+    margin-top: 10px;
+    color: #63678c;
+    font-size: 15px;
+    flex-direction: column;
+    padding-left: 25%;
+}
+
+a {
+    text-decoration:none;
+}
+
+.inner_ack_dev { 
+    margin-top: 10px;
+    padding-left: 38%;
+    color: #63678c;
+    font-size: 25px;
+    flex-direction: column;
+    text-align: center;
+}
